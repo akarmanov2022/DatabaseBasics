@@ -33,5 +33,17 @@ namespace Lab2.Properties {
                 return ((string)(this["TUSURConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 100")]
+        public global::System.Drawing.Point FormPos {
+            get {
+                return ((global::System.Drawing.Point)(this["FormPos"]));
+            }
+            set {
+                this["FormPos"] = value;
+            }
+        }
     }
 }

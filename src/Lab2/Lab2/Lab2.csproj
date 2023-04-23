@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\LeagueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LeagueForm.Designer.cs">
+      <DependentUpon>LeagueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MatchesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MatchesForm.Designer.cs">
+      <DependentUpon>MatchesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlayersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlayersForm.Designer.cs">
+      <DependentUpon>PlayersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,11 +72,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\TeamsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TeamsForm.Designer.cs">
+      <DependentUpon>TeamsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TUSURDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TUSURDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\LeagueForm.resx">
+      <DependentUpon>LeagueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MatchesForm.resx">
+      <DependentUpon>MatchesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlayersForm.resx">
+      <DependentUpon>PlayersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +105,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Forms\TeamsForm.resx">
+      <DependentUpon>TeamsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,5 +156,6 @@
   <ItemGroup>
     <None Include="Resources\teams.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

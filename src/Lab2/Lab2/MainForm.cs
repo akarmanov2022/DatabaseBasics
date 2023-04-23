@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lab2.Forms;
 
 namespace Lab2
 {
@@ -33,6 +34,31 @@ namespace Lab2
             e.Cancel = MessageBox.Show(@"Вы хотите закрыть программу?",
                            @"Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question) !=
                        DialogResult.Yes;
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void TeamsToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            TeamsForm.GetForm().ShowDialog();
+        }
+
+        private void PlayersToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            PlayersForm.GetForm().ShowDialog();
+        }
+
+        private void MatchesToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            MatchesForm.GetForm().ShowDialog();
+        }
+
+        private void LeagueToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            LeagueForm.GetForm().ShowDialog();
         }
     }
 }
