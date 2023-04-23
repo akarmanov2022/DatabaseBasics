@@ -38,14 +38,24 @@
             this.AboutToolContextStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolContextStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainToolStrip = new System.Windows.Forms.ToolStrip();
+            this.AboutToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.ExitToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.LeagueToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.MatchToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.PlayersToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.TeamsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.menuStripMain.SuspendLayout();
             this.ContextMenuStripMain.SuspendLayout();
+            this.MainToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
             // 
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Size = new System.Drawing.Size(800, 24);
@@ -117,11 +127,89 @@
             this.ExitToolContextStripMenuItem.Text = "Выход";
             this.ExitToolContextStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // MainToolStrip
+            // 
+            this.MainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AboutToolStripButton,
+            this.ExitToolStripButton,
+            this.LeagueToolStripButton,
+            this.MatchToolStripButton,
+            this.PlayersToolStripButton,
+            this.TeamsToolStripButton});
+            this.MainToolStrip.Location = new System.Drawing.Point(0, 24);
+            this.MainToolStrip.Name = "MainToolStrip";
+            this.MainToolStrip.Size = new System.Drawing.Size(800, 25);
+            this.MainToolStrip.TabIndex = 1;
+            this.MainToolStrip.Text = "toolStrip1";
+            // 
+            // AboutToolStripButton
+            // 
+            this.AboutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AboutToolStripButton.Image = global::Lab2.Properties.Resources.about;
+            this.AboutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AboutToolStripButton.Name = "AboutToolStripButton";
+            this.AboutToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.AboutToolStripButton.Text = "toolStripButton1";
+            this.AboutToolStripButton.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
+            // ExitToolStripButton
+            // 
+            this.ExitToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ExitToolStripButton.Image = global::Lab2.Properties.Resources.exit;
+            this.ExitToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ExitToolStripButton.Name = "ExitToolStripButton";
+            this.ExitToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.ExitToolStripButton.Text = "toolStripButton2";
+            this.ExitToolStripButton.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // LeagueToolStripButton
+            // 
+            this.LeagueToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LeagueToolStripButton.Image = global::Lab2.Properties.Resources.leagues;
+            this.LeagueToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LeagueToolStripButton.Name = "LeagueToolStripButton";
+            this.LeagueToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.LeagueToolStripButton.Text = "toolStripButton3";
+            // 
+            // MatchToolStripButton
+            // 
+            this.MatchToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.MatchToolStripButton.Image = global::Lab2.Properties.Resources.match;
+            this.MatchToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MatchToolStripButton.Name = "MatchToolStripButton";
+            this.MatchToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.MatchToolStripButton.Text = "toolStripButton4";
+            // 
+            // PlayersToolStripButton
+            // 
+            this.PlayersToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.PlayersToolStripButton.Image = global::Lab2.Properties.Resources.players;
+            this.PlayersToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PlayersToolStripButton.Name = "PlayersToolStripButton";
+            this.PlayersToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.PlayersToolStripButton.Text = "toolStripButton5";
+            // 
+            // TeamsToolStripButton
+            // 
+            this.TeamsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TeamsToolStripButton.Image = global::Lab2.Properties.Resources.teams;
+            this.TeamsToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TeamsToolStripButton.Name = "TeamsToolStripButton";
+            this.TeamsToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.TeamsToolStripButton.Text = "toolStripButton6";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MainToolStrip);
             this.Controls.Add(this.menuStripMain);
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainForm";
@@ -130,6 +218,8 @@
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.ContextMenuStripMain.ResumeLayout(false);
+            this.MainToolStrip.ResumeLayout(false);
+            this.MainToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,6 +236,14 @@
         private System.Windows.Forms.ToolStripMenuItem AboutToolContextStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem ExitToolContextStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStrip MainToolStrip;
+        private System.Windows.Forms.ToolStripButton AboutToolStripButton;
+        private System.Windows.Forms.ToolStripButton ExitToolStripButton;
+        private System.Windows.Forms.ToolStripButton LeagueToolStripButton;
+        private System.Windows.Forms.ToolStripButton MatchToolStripButton;
+        private System.Windows.Forms.ToolStripButton PlayersToolStripButton;
+        private System.Windows.Forms.ToolStripButton TeamsToolStripButton;
     }
 }
 
