@@ -1,0 +1,15 @@
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\bin\Debug\Lab2.exe.config
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\bin\Debug\Lab2.exe
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\bin\Debug\Lab2.pdb
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.csproj.AssemblyReference.cache
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.csproj.SuggestedBindingRedirects.cache
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.Properties.Resources.resources
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.csproj.GenerateResource.cache
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.csproj.CoreCompileInputs.cache
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.exe
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.pdb
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.MainForm.resources
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.Forms.TeamsForm.resources
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.Forms.PlayersForm.resources
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.Forms.MatchesForm.resources
+E:\Workspace\TUSUR\DatabaseBasics\src\Lab2\Lab2\obj\Debug\Lab2.Forms.LeagueForm.resources
