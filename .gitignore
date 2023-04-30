@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/Lab2/Lab2/bin/Debug/Lab2.exe
+/src/Lab2/Lab2/bin/*
+/src/Lab2/Lab2/obj/*
+/src/Lab2/Lab2/obj/Debug/*
+/src/Lab2/Lab2/bin/Debug/Lab2.pdb
