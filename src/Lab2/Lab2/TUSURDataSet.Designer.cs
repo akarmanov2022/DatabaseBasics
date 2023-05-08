@@ -59,6 +59,7 @@ namespace Lab2 {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -70,6 +71,9 @@ namespace Lab2 {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -105,6 +109,7 @@ namespace Lab2 {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -216,6 +221,7 @@ namespace Lab2 {
         public override global::System.Data.DataSet Clone() {
             TUSURDataSet cln = ((TUSURDataSet)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -342,7 +348,7 @@ namespace Lab2 {
             this.Namespace = "http://tempuri.org/TUSURDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableLeagueTable = new LeagueTableDataTable();
+            this.tableLeagueTable = new LeagueTableDataTable(false);
             base.Tables.Add(this.tableLeagueTable);
             this.tableMatch = new MatchDataTable();
             base.Tables.Add(this.tableMatch);
@@ -471,6 +477,12 @@ namespace Lab2 {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitExpressions() {
+            this.LeagueTable.Points_comColumn.Expression = "GamesPlayed+GamesWon+GamesLost+GamesDrawn+GoalsFor+GoalsAgainst+GoalDifference";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void LeagueTableRowChangeEventHandler(object sender, LeagueTableRowChangeEvent e);
         
@@ -516,12 +528,23 @@ namespace Lab2 {
             
             private global::System.Data.DataColumn columnPoints;
             
+            private global::System.Data.DataColumn columnPoints_com;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LeagueTableDataTable() {
+            public LeagueTableDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public LeagueTableDataTable(bool initExpressions) {
                 this.TableName = "LeagueTable";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -631,6 +654,14 @@ namespace Lab2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Points_comColumn {
+                get {
+                    return this.columnPoints_com;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -666,7 +697,7 @@ namespace Lab2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public LeagueTableRow AddLeagueTableRow(TeamRow parentTeamRowByLeagueTable_Team_Id_fk, int GamesPlayed, int GamesWon, int GamesLost, int GamesDrawn, int GoalsFor, int GoalsAgainst, int GoalDifference, int Points) {
+            public LeagueTableRow AddLeagueTableRow(TeamRow parentTeamRowByLeagueTable_Team_Id_fk, int GamesPlayed, int GamesWon, int GamesLost, int GamesDrawn, int GoalsFor, int GoalsAgainst, int GoalDifference, string Points, string Points_com) {
                 LeagueTableRow rowLeagueTableRow = ((LeagueTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -678,7 +709,32 @@ namespace Lab2 {
                         GoalsFor,
                         GoalsAgainst,
                         GoalDifference,
-                        Points};
+                        Points,
+                        Points_com};
+                if ((parentTeamRowByLeagueTable_Team_Id_fk != null)) {
+                    columnValuesArray[1] = parentTeamRowByLeagueTable_Team_Id_fk[0];
+                }
+                rowLeagueTableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowLeagueTableRow);
+                return rowLeagueTableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public LeagueTableRow AddLeagueTableRow(TeamRow parentTeamRowByLeagueTable_Team_Id_fk, int GamesPlayed, int GamesWon, int GamesLost, int GamesDrawn, int GoalsFor, int GoalsAgainst, int GoalDifference, string Points) {
+                LeagueTableRow rowLeagueTableRow = ((LeagueTableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        GamesPlayed,
+                        GamesWon,
+                        GamesLost,
+                        GamesDrawn,
+                        GoalsFor,
+                        GoalsAgainst,
+                        GoalDifference,
+                        Points,
+                        null};
                 if ((parentTeamRowByLeagueTable_Team_Id_fk != null)) {
                     columnValuesArray[1] = parentTeamRowByLeagueTable_Team_Id_fk[0];
                 }
@@ -721,6 +777,7 @@ namespace Lab2 {
                 this.columnGoalsAgainst = base.Columns["GoalsAgainst"];
                 this.columnGoalDifference = base.Columns["GoalDifference"];
                 this.columnPoints = base.Columns["Points"];
+                this.columnPoints_com = base.Columns["Points_com"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -744,8 +801,10 @@ namespace Lab2 {
                 base.Columns.Add(this.columnGoalsAgainst);
                 this.columnGoalDifference = new global::System.Data.DataColumn("GoalDifference", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGoalDifference);
-                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnPoints = new global::System.Data.DataColumn("Points", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPoints);
+                this.columnPoints_com = new global::System.Data.DataColumn("Points_com", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPoints_com);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -756,13 +815,23 @@ namespace Lab2 {
                 this.columnId.Unique = true;
                 this.columnTeamId.AllowDBNull = false;
                 this.columnGamesPlayed.AllowDBNull = false;
+                this.columnGamesPlayed.DefaultValue = ((int)(0));
                 this.columnGamesWon.AllowDBNull = false;
+                this.columnGamesWon.DefaultValue = ((int)(0));
                 this.columnGamesLost.AllowDBNull = false;
+                this.columnGamesLost.DefaultValue = ((int)(0));
                 this.columnGamesDrawn.AllowDBNull = false;
+                this.columnGamesDrawn.DefaultValue = ((int)(0));
                 this.columnGoalsFor.AllowDBNull = false;
+                this.columnGoalsFor.DefaultValue = ((int)(0));
                 this.columnGoalsAgainst.AllowDBNull = false;
+                this.columnGoalsAgainst.DefaultValue = ((int)(0));
                 this.columnGoalDifference.AllowDBNull = false;
-                this.columnPoints.AllowDBNull = false;
+                this.columnGoalDifference.DefaultValue = ((int)(0));
+                this.columnPoints.ReadOnly = true;
+                this.columnPoints.DefaultValue = ((string)("0"));
+                this.columnPoints_com.ReadOnly = true;
+                this.columnPoints_com.DefaultValue = ((string)("0"));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -781,6 +850,12 @@ namespace Lab2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(LeagueTableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitExpressions() {
+                this.Points_comColumn.Expression = "GamesPlayed+GamesWon+GamesLost+GamesDrawn+GoalsFor+GoalsAgainst+GoalDifference";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2495,12 +2570,33 @@ namespace Lab2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Points {
+            public string Points {
                 get {
-                    return ((int)(this[this.tableLeagueTable.PointsColumn]));
+                    try {
+                        return ((string)(this[this.tableLeagueTable.PointsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Points\' in table \'LeagueTable\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableLeagueTable.PointsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Points_com {
+                get {
+                    try {
+                        return ((string)(this[this.tableLeagueTable.Points_comColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Points_com\' in table \'LeagueTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableLeagueTable.Points_comColumn] = value;
                 }
             }
             
@@ -2513,6 +2609,30 @@ namespace Lab2 {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["LeagueTable_Team_Id_fk"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPointsNull() {
+                return this.IsNull(this.tableLeagueTable.PointsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPointsNull() {
+                this[this.tableLeagueTable.PointsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPoints_comNull() {
+                return this.IsNull(this.tableLeagueTable.Points_comColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPoints_comNull() {
+                this[this.tableLeagueTable.Points_comColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3260,11 +3380,10 @@ namespace Lab2.TUSURDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("GoalsFor", "GoalsFor");
             tableMapping.ColumnMappings.Add("GoalsAgainst", "GoalsAgainst");
             tableMapping.ColumnMappings.Add("GoalDifference", "GoalDifference");
-            tableMapping.ColumnMappings.Add("Points", "Points");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[LeagueTable] WHERE (([Id] = @Original_Id) AND ([TeamId] = @Original_TeamId) AND ([GamesPlayed] = @Original_GamesPlayed) AND ([GamesWon] = @Original_GamesWon) AND ([GamesLost] = @Original_GamesLost) AND ([GamesDrawn] = @Original_GamesDrawn) AND ([GoalsFor] = @Original_GoalsFor) AND ([GoalsAgainst] = @Original_GoalsAgainst) AND ([GoalDifference] = @Original_GoalDifference) AND ([Points] = @Original_Points))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [LeagueTable] WHERE (([Id] = @Original_Id) AND ([TeamId] = @Original_TeamId) AND ([GamesPlayed] = @Original_GamesPlayed) AND ([GamesWon] = @Original_GamesWon) AND ([GamesLost] = @Original_GamesLost) AND ([GamesDrawn] = @Original_GamesDrawn) AND ([GoalsFor] = @Original_GoalsFor) AND ([GoalsAgainst] = @Original_GoalsAgainst) AND ([GoalDifference] = @Original_GoalDifference))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TeamId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3275,7 +3394,6 @@ namespace Lab2.TUSURDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GoalsFor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalsFor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GoalsAgainst", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalsAgainst", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GoalDifference", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalDifference", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Points", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Points", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[LeagueTable] ([TeamId], [GamesPlayed], [GamesWon], [GamesLost], [GamesDrawn], [GoalsFor], [GoalsAgainst], [GoalDifference], [Points]) VALUES (@TeamId, @GamesPlayed, @GamesWon, @GamesLost, @GamesDrawn, @GoalsFor, @GoalsAgainst, @GoalDifference, @Points);
@@ -3292,8 +3410,8 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Points", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Points", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[LeagueTable] SET [TeamId] = @TeamId, [GamesPlayed] = @GamesPlayed, [GamesWon] = @GamesWon, [GamesLost] = @GamesLost, [GamesDrawn] = @GamesDrawn, [GoalsFor] = @GoalsFor, [GoalsAgainst] = @GoalsAgainst, [GoalDifference] = @GoalDifference, [Points] = @Points WHERE (([Id] = @Original_Id) AND ([TeamId] = @Original_TeamId) AND ([GamesPlayed] = @Original_GamesPlayed) AND ([GamesWon] = @Original_GamesWon) AND ([GamesLost] = @Original_GamesLost) AND ([GamesDrawn] = @Original_GamesDrawn) AND ([GoalsFor] = @Original_GoalsFor) AND ([GoalsAgainst] = @Original_GoalsAgainst) AND ([GoalDifference] = @Original_GoalDifference) AND ([Points] = @Original_Points));
-SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, GoalsAgainst, GoalDifference, Points FROM LeagueTable WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [LeagueTable] SET [TeamId] = @TeamId, [GamesPlayed] = @GamesPlayed, [GamesWon] = @GamesWon, [GamesLost] = @GamesLost, [GamesDrawn] = @GamesDrawn, [GoalsFor] = @GoalsFor, [GoalsAgainst] = @GoalsAgainst, [GoalDifference] = @GoalDifference WHERE (([Id] = @Original_Id) AND ([TeamId] = @Original_TeamId) AND ([GamesPlayed] = @Original_GamesPlayed) AND ([GamesWon] = @Original_GamesWon) AND ([GamesLost] = @Original_GamesLost) AND ([GamesDrawn] = @Original_GamesDrawn) AND ([GoalsFor] = @Original_GoalsFor) AND ([GoalsAgainst] = @Original_GoalsAgainst) AND ([GoalDifference] = @Original_GoalDifference));
+SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, GoalsAgainst, GoalDifference FROM LeagueTable WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TeamId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GamesPlayed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GamesPlayed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3303,7 +3421,6 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GoalsFor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalsFor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GoalsAgainst", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalsAgainst", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GoalDifference", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalDifference", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Points", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Points", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TeamId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TeamId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GamesPlayed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GamesPlayed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -3313,7 +3430,6 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GoalsFor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalsFor", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GoalsAgainst", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalsAgainst", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GoalDifference", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GoalDifference", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Points", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Points", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -3331,7 +3447,7 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, GoalsA" +
-                "gainst, GoalDifference, Points FROM dbo.LeagueTable";
+                "gainst, GoalDifference FROM LeagueTable";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3354,7 +3470,7 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual TUSURDataSet.LeagueTableDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            TUSURDataSet.LeagueTableDataTable dataTable = new TUSURDataSet.LeagueTableDataTable();
+            TUSURDataSet.LeagueTableDataTable dataTable = new TUSURDataSet.LeagueTableDataTable(true);
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3392,7 +3508,7 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_TeamId, int Original_GamesPlayed, int Original_GamesWon, int Original_GamesLost, int Original_GamesDrawn, int Original_GoalsFor, int Original_GoalsAgainst, int Original_GoalDifference, int Original_Points) {
+        public virtual int Delete(int Original_Id, int Original_TeamId, int Original_GamesPlayed, int Original_GamesWon, int Original_GamesLost, int Original_GamesDrawn, int Original_GoalsFor, int Original_GoalsAgainst, int Original_GoalDifference) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_TeamId));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_GamesPlayed));
@@ -3402,7 +3518,6 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
             this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_GoalsFor));
             this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_GoalsAgainst));
             this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_GoalDifference));
-            this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_Points));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3462,7 +3577,6 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
                     int GoalsFor, 
                     int GoalsAgainst, 
                     int GoalDifference, 
-                    int Points, 
                     int Original_Id, 
                     int Original_TeamId, 
                     int Original_GamesPlayed, 
@@ -3472,7 +3586,6 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
                     int Original_GoalsFor, 
                     int Original_GoalsAgainst, 
                     int Original_GoalDifference, 
-                    int Original_Points, 
                     int Id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(TeamId));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(GamesPlayed));
@@ -3482,18 +3595,16 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(GoalsFor));
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(GoalsAgainst));
             this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(GoalDifference));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Points));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_TeamId));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_GamesPlayed));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_GamesWon));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_GamesLost));
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_GamesDrawn));
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_GoalsFor));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_GoalsAgainst));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_GoalDifference));
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_Points));
-            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_TeamId));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_GamesPlayed));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_GamesWon));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_GamesLost));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_GamesDrawn));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_GoalsFor));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_GoalsAgainst));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_GoalDifference));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3523,7 +3634,6 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
                     int GoalsFor, 
                     int GoalsAgainst, 
                     int GoalDifference, 
-                    int Points, 
                     int Original_Id, 
                     int Original_TeamId, 
                     int Original_GamesPlayed, 
@@ -3532,9 +3642,8 @@ SELECT Id, TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, Goals
                     int Original_GamesDrawn, 
                     int Original_GoalsFor, 
                     int Original_GoalsAgainst, 
-                    int Original_GoalDifference, 
-                    int Original_Points) {
-            return this.Update(TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, GoalsAgainst, GoalDifference, Points, Original_Id, Original_TeamId, Original_GamesPlayed, Original_GamesWon, Original_GamesLost, Original_GamesDrawn, Original_GoalsFor, Original_GoalsAgainst, Original_GoalDifference, Original_Points, Original_Id);
+                    int Original_GoalDifference) {
+            return this.Update(TeamId, GamesPlayed, GamesWon, GamesLost, GamesDrawn, GoalsFor, GoalsAgainst, GoalDifference, Original_Id, Original_TeamId, Original_GamesPlayed, Original_GamesWon, Original_GamesLost, Original_GamesDrawn, Original_GoalsFor, Original_GoalsAgainst, Original_GoalDifference, Original_Id);
         }
     }
     

@@ -34,22 +34,26 @@
             this.leagueTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.leagueTableTableAdapter = new Lab2.TUSURDataSetTableAdapters.LeagueTableTableAdapter();
             this.tableAdapterManager = new Lab2.TUSURDataSetTableAdapters.TableAdapterManager();
+            this.teamTableAdapter = new Lab2.TUSURDataSetTableAdapters.TeamTableAdapter();
             this.leagueTableBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.leagueTableDataGridView = new System.Windows.Forms.DataGridView();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.leagueTableBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripTextBoxSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.SearchLabel = new System.Windows.Forms.ToolStripLabel();
+            this.leagueTableDataGridView = new System.Windows.Forms.DataGridView();
             this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teamTableAdapter = new Lab2.TUSURDataSetTableAdapters.TeamTableAdapter();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Team = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +63,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Points_com = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tUSURDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leagueTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leagueTableBindingNavigator)).BeginInit();
@@ -93,6 +97,10 @@
             this.tableAdapterManager.TeamTableAdapter = this.teamTableAdapter;
             this.tableAdapterManager.UpdateOrder = Lab2.TUSURDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // teamTableAdapter
+            // 
+            this.teamTableAdapter.ClearBeforeFill = true;
+            // 
             // leagueTableBindingNavigator
             // 
             this.leagueTableBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -111,7 +119,10 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.leagueTableBindingNavigatorSaveItem});
+            this.leagueTableBindingNavigatorSaveItem,
+            this.toolStripSeparator1,
+            this.ToolStripTextBoxSearch,
+            this.SearchLabel});
             this.leagueTableBindingNavigator.Location = new System.Drawing.Point(0, 0);
             this.leagueTableBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.leagueTableBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -123,60 +134,6 @@
             this.leagueTableBindingNavigator.TabIndex = 0;
             this.leagueTableBindingNavigator.Text = "bindingNavigator1";
             // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // leagueTableDataGridView
-            // 
-            this.leagueTableDataGridView.AutoGenerateColumns = false;
-            this.leagueTableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.leagueTableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.leagueTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.Team,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10});
-            this.leagueTableDataGridView.DataSource = this.leagueTableBindingSource;
-            this.leagueTableDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.leagueTableDataGridView.Location = new System.Drawing.Point(0, 25);
-            this.leagueTableDataGridView.Name = "leagueTableDataGridView";
-            this.leagueTableDataGridView.Size = new System.Drawing.Size(800, 425);
-            this.leagueTableDataGridView.TabIndex = 1;
-            // 
             // bindingNavigatorAddNewItem
             // 
             this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -185,6 +142,13 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -213,6 +177,26 @@
             this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMovePreviousItem.Text = "Move previous";
             // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // bindingNavigatorMoveNextItem
             // 
             this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -231,6 +215,11 @@
             this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // leagueTableBindingNavigatorSaveItem
             // 
             this.leagueTableBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -238,16 +227,58 @@
             this.leagueTableBindingNavigatorSaveItem.Name = "leagueTableBindingNavigatorSaveItem";
             this.leagueTableBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.leagueTableBindingNavigatorSaveItem.Text = "Save Data";
-            this.leagueTableBindingNavigatorSaveItem.Click += new System.EventHandler(this.leagueTableBindingNavigatorSaveItem_Click);
+            this.leagueTableBindingNavigatorSaveItem.Click += new System.EventHandler(this.LeagueTableBindingNavigatorSaveItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // ToolStripTextBoxSearch
+            // 
+            this.ToolStripTextBoxSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ToolStripTextBoxSearch.Name = "ToolStripTextBoxSearch";
+            this.ToolStripTextBoxSearch.Size = new System.Drawing.Size(100, 25);
+            this.ToolStripTextBoxSearch.TextChanged += new System.EventHandler(this.ToolStripTextBoxSearch_TextChanged);
+            // 
+            // SearchLabel
+            // 
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(42, 22);
+            this.SearchLabel.Text = "Поиск";
+            // 
+            // leagueTableDataGridView
+            // 
+            this.leagueTableDataGridView.AutoGenerateColumns = false;
+            this.leagueTableDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.leagueTableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.leagueTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.Team,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.Points_com});
+            this.leagueTableDataGridView.DataSource = this.leagueTableBindingSource;
+            this.leagueTableDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.leagueTableDataGridView.Location = new System.Drawing.Point(0, 25);
+            this.leagueTableDataGridView.Name = "leagueTableDataGridView";
+            this.leagueTableDataGridView.Size = new System.Drawing.Size(800, 425);
+            this.leagueTableDataGridView.TabIndex = 1;
             // 
             // teamBindingSource
             // 
             this.teamBindingSource.DataMember = "Team";
             this.teamBindingSource.DataSource = this.tUSURDataSet;
             // 
-            // teamTableAdapter
+            // contextMenuStrip1
             // 
-            this.teamTableAdapter.ClearBeforeFill = true;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -307,11 +338,12 @@
             this.dataGridViewTextBoxColumn9.HeaderText = "GoalDifference";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
-            // dataGridViewTextBoxColumn10
+            // Points_com
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Points";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Points";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.Points_com.DataPropertyName = "Points_com";
+            this.Points_com.HeaderText = "Points";
+            this.Points_com.Name = "Points_com";
+            this.Points_com.ReadOnly = true;
             // 
             // LeagueForm
             // 
@@ -357,6 +389,10 @@
         private System.Windows.Forms.DataGridView leagueTableDataGridView;
         private TUSURDataSetTableAdapters.TeamTableAdapter teamTableAdapter;
         private System.Windows.Forms.BindingSource teamBindingSource;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripTextBox ToolStripTextBoxSearch;
+        private System.Windows.Forms.ToolStripLabel SearchLabel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Team;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -366,6 +402,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Points_com;
     }
 }
