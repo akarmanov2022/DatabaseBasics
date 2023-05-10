@@ -30,10 +30,19 @@ namespace Lab2.Forms
 
         private void PlayerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.playerBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.tUSURDataSet);
-
+            try
+            {
+                this.Validate();
+                this.playerBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.tUSURDataSet);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message,
+                    @"Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void PlayersForm_Load(object sender, EventArgs e)

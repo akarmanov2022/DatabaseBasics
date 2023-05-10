@@ -20,9 +20,19 @@ namespace Lab2.Forms
 
         private void TeamBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            this.Validate();
-            this.teamBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.tUSURDataSet);
+            try
+            {
+                this.Validate();
+                this.teamBindingSource.EndEdit();
+                this.tableAdapterManager.UpdateAll(this.tUSURDataSet);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, 
+                    @"Error", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+            }
 
         }
 

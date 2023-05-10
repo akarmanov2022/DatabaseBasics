@@ -64,10 +64,10 @@
     <Compile Include="Forms\PlayersForm.Designer.cs">
       <DependentUpon>PlayersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -77,6 +77,9 @@
     </Compile>
     <Compile Include="Forms\TeamsForm.Designer.cs">
       <DependentUpon>TeamsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TUSURDataSet.cs">
+      <DependentUpon>TUSURDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="TUSURDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,7 +95,7 @@
     <EmbeddedResource Include="Forms\PlayersForm.resx">
       <DependentUpon>PlayersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -155,9 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\teams.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".gitignore" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

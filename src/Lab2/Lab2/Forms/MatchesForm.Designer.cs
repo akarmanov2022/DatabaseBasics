@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label idLabel;
             System.Windows.Forms.Label dateLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatchesForm));
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatchesForm));
             this.tUSURDataSet = new Lab2.TUSURDataSet();
             this.matchBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.matchTableAdapter = new Lab2.TUSURDataSetTableAdapters.MatchTableAdapter();
@@ -57,22 +57,22 @@
             this.dateDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.matchScoreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.matchScoreDataGridView = new System.Windows.Forms.DataGridView();
-            this.matchScoreMatchIdfkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teamTableAdapter = new Lab2.TUSURDataSetTableAdapters.TeamTableAdapter();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.teamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matchScoreMatchIdfkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teamTableAdapter = new Lab2.TUSURDataSetTableAdapters.TeamTableAdapter();
             this.matchLineupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.matchLineupTableAdapter = new Lab2.TUSURDataSetTableAdapters.MatchLineupTableAdapter();
             this.matchLineupDataGridView = new System.Windows.Forms.DataGridView();
-            this.matchLineupMatchIdfkBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.matchLineupBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.playerTableAdapter = new Lab2.TUSURDataSetTableAdapters.PlayerTableAdapter();
-            this.matchLineupPlayerIdfkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.matchLineupMatchIdfkBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.matchLineupBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.playerTableAdapter = new Lab2.TUSURDataSetTableAdapters.PlayerTableAdapter();
+            this.matchLineupPlayerIdfkBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             dateLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -84,13 +84,13 @@
             this.matchBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matchScoreBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchScoreDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.matchScoreMatchIdfkBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matchScoreMatchIdfkBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupMatchIdfkBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupPlayerIdfkBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,6 +111,24 @@
             dateLabel.Size = new System.Drawing.Size(33, 13);
             dateLabel.TabIndex = 3;
             dateLabel.Text = "Date:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(17, 101);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(66, 13);
+            label1.TabIndex = 6;
+            label1.Text = "Счет матча:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(506, 101);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(79, 13);
+            label2.TabIndex = 7;
+            label2.Text = "Состав матча:";
             // 
             // tUSURDataSet
             // 
@@ -173,6 +191,7 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
@@ -306,22 +325,9 @@
             this.matchScoreDataGridView.DataSource = this.matchScoreMatchIdfkBindingSource;
             this.matchScoreDataGridView.Location = new System.Drawing.Point(95, 101);
             this.matchScoreDataGridView.Name = "matchScoreDataGridView";
+            this.matchScoreDataGridView.ReadOnly = true;
             this.matchScoreDataGridView.Size = new System.Drawing.Size(392, 348);
             this.matchScoreDataGridView.TabIndex = 5;
-            // 
-            // matchScoreMatchIdfkBindingSource
-            // 
-            this.matchScoreMatchIdfkBindingSource.DataMember = "MatchScore_Match_Id_fk";
-            this.matchScoreMatchIdfkBindingSource.DataSource = this.matchBindingSource;
-            // 
-            // teamBindingSource
-            // 
-            this.teamBindingSource.DataMember = "Team";
-            this.teamBindingSource.DataSource = this.tUSURDataSet;
-            // 
-            // teamTableAdapter
-            // 
-            this.teamTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -337,33 +343,31 @@
             this.dataGridViewTextBoxColumn3.DisplayMember = "TeamName";
             this.dataGridViewTextBoxColumn3.HeaderText = "Team";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn3.ValueMember = "Id";
+            // 
+            // teamBindingSource
+            // 
+            this.teamBindingSource.DataMember = "Team";
+            this.teamBindingSource.DataSource = this.tUSURDataSet;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Goals";
             this.dataGridViewTextBoxColumn4.HeaderText = "Goals";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // label1
+            // matchScoreMatchIdfkBindingSource
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(17, 101);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(66, 13);
-            label1.TabIndex = 6;
-            label1.Text = "Счет матча:";
+            this.matchScoreMatchIdfkBindingSource.DataMember = "MatchScore_Match_Id_fk";
+            this.matchScoreMatchIdfkBindingSource.DataSource = this.matchBindingSource;
             // 
-            // label2
+            // teamTableAdapter
             // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(506, 101);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(79, 13);
-            label2.TabIndex = 7;
-            label2.Text = "Состав матча:";
+            this.teamTableAdapter.ClearBeforeFill = true;
             // 
             // matchLineupBindingSource
             // 
@@ -387,32 +391,9 @@
             this.matchLineupDataGridView.DataSource = this.matchLineupBindingSource;
             this.matchLineupDataGridView.Location = new System.Drawing.Point(584, 101);
             this.matchLineupDataGridView.Name = "matchLineupDataGridView";
+            this.matchLineupDataGridView.ReadOnly = true;
             this.matchLineupDataGridView.Size = new System.Drawing.Size(388, 348);
             this.matchLineupDataGridView.TabIndex = 8;
-            // 
-            // matchLineupMatchIdfkBindingSource
-            // 
-            this.matchLineupMatchIdfkBindingSource.DataMember = "MatchLineup_Match_Id_fk";
-            this.matchLineupMatchIdfkBindingSource.DataSource = this.matchBindingSource;
-            // 
-            // matchLineupBindingSource1
-            // 
-            this.matchLineupBindingSource1.DataMember = "MatchLineup";
-            this.matchLineupBindingSource1.DataSource = this.tUSURDataSet;
-            // 
-            // playerBindingSource
-            // 
-            this.playerBindingSource.DataMember = "Player";
-            this.playerBindingSource.DataSource = this.tUSURDataSet;
-            // 
-            // playerTableAdapter
-            // 
-            this.playerTableAdapter.ClearBeforeFill = true;
-            // 
-            // matchLineupPlayerIdfkBindingSource
-            // 
-            this.matchLineupPlayerIdfkBindingSource.DataMember = "MatchLineup_Player_Id_fk";
-            this.matchLineupPlayerIdfkBindingSource.DataSource = this.playerBindingSource;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -428,9 +409,34 @@
             this.dataGridViewTextBoxColumn6.DisplayMember = "PlayerName";
             this.dataGridViewTextBoxColumn6.HeaderText = "Player";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumn6.ValueMember = "Id";
+            // 
+            // playerBindingSource
+            // 
+            this.playerBindingSource.DataMember = "Player";
+            this.playerBindingSource.DataSource = this.tUSURDataSet;
+            // 
+            // matchLineupMatchIdfkBindingSource
+            // 
+            this.matchLineupMatchIdfkBindingSource.DataMember = "MatchLineup_Match_Id_fk";
+            this.matchLineupMatchIdfkBindingSource.DataSource = this.matchBindingSource;
+            // 
+            // matchLineupBindingSource1
+            // 
+            this.matchLineupBindingSource1.DataMember = "MatchLineup";
+            this.matchLineupBindingSource1.DataSource = this.tUSURDataSet;
+            // 
+            // playerTableAdapter
+            // 
+            this.playerTableAdapter.ClearBeforeFill = true;
+            // 
+            // matchLineupPlayerIdfkBindingSource
+            // 
+            this.matchLineupPlayerIdfkBindingSource.DataMember = "MatchLineup_Player_Id_fk";
+            this.matchLineupPlayerIdfkBindingSource.DataSource = this.playerBindingSource;
             // 
             // MatchesForm
             // 
@@ -458,13 +464,13 @@
             this.matchBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.matchScoreBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchScoreDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.matchScoreMatchIdfkBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.matchScoreMatchIdfkBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupMatchIdfkBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.matchLineupPlayerIdfkBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
