@@ -29,12 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Lab2.Properties.Settings settings1 = new Lab2.Properties.Settings();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.TeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MatchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LeagueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AboutToolContextStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.ExitToolContextStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolStrip = new System.Windows.Forms.ToolStrip();
             this.AboutToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ExitToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -42,14 +51,7 @@
             this.MatchToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.PlayersToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.TeamsToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PlayersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MatchesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LeagueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutToolContextStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExitToolContextStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripLabelQueries = new System.Windows.Forms.ToolStripLabel();
             this.menuStripMain.SuspendLayout();
             this.ContextMenuStripMain.SuspendLayout();
             this.MainToolStrip.SuspendLayout();
@@ -57,9 +59,7 @@
             // 
             // menuStripMain
             // 
-            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.HelpToolStripMenu});
+            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.fileToolStripMenuItem, this.HelpToolStripMenu });
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Size = new System.Drawing.Size(800, 24);
@@ -68,53 +68,105 @@
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.aboutToolStripMenuItem});
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.exitToolStripMenuItem, this.toolStripSeparator1, this.aboutToolStripMenuItem });
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.fileToolStripMenuItem.Text = "Файл";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::Lab2.Properties.Resources.exit;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.exitToolStripMenuItem.Text = "Выход";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(188, 6);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Image = global::Lab2.Properties.Resources.about;
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.aboutToolStripMenuItem.Text = "О программе...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+            // 
             // HelpToolStripMenu
             // 
-            this.HelpToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TeamsToolStripMenuItem,
-            this.PlayersToolStripMenuItem,
-            this.MatchesToolStripMenuItem,
-            this.LeagueToolStripMenuItem});
+            this.HelpToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.TeamsToolStripMenuItem, this.PlayersToolStripMenuItem, this.MatchesToolStripMenuItem, this.LeagueToolStripMenuItem });
             this.HelpToolStripMenu.Name = "HelpToolStripMenu";
             this.HelpToolStripMenu.Size = new System.Drawing.Size(87, 20);
             this.HelpToolStripMenu.Text = "Справочник";
             // 
+            // TeamsToolStripMenuItem
+            // 
+            this.TeamsToolStripMenuItem.Image = global::Lab2.Properties.Resources.teams;
+            this.TeamsToolStripMenuItem.Name = "TeamsToolStripMenuItem";
+            this.TeamsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.TeamsToolStripMenuItem.Text = "Каманды";
+            this.TeamsToolStripMenuItem.Click += new System.EventHandler(this.TeamsToolStripMenuItem_Click);
+            // 
+            // PlayersToolStripMenuItem
+            // 
+            this.PlayersToolStripMenuItem.Image = global::Lab2.Properties.Resources.players;
+            this.PlayersToolStripMenuItem.Name = "PlayersToolStripMenuItem";
+            this.PlayersToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.PlayersToolStripMenuItem.Text = "Игроки";
+            this.PlayersToolStripMenuItem.Click += new System.EventHandler(this.PlayersToolStripMenuItem_Click);
+            // 
+            // MatchesToolStripMenuItem
+            // 
+            this.MatchesToolStripMenuItem.Image = global::Lab2.Properties.Resources.match;
+            this.MatchesToolStripMenuItem.Name = "MatchesToolStripMenuItem";
+            this.MatchesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.MatchesToolStripMenuItem.Text = "Матчи";
+            this.MatchesToolStripMenuItem.Click += new System.EventHandler(this.MatchesToolStripMenuItem_Click);
+            // 
+            // LeagueToolStripMenuItem
+            // 
+            this.LeagueToolStripMenuItem.Image = global::Lab2.Properties.Resources.leagues;
+            this.LeagueToolStripMenuItem.Name = "LeagueToolStripMenuItem";
+            this.LeagueToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.LeagueToolStripMenuItem.Text = "Турнирная таблица";
+            this.LeagueToolStripMenuItem.Click += new System.EventHandler(this.LeagueToolStripMenuItem_Click);
+            // 
             // ContextMenuStripMain
             // 
-            this.ContextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutToolContextStripMenuItem,
-            this.toolStripSeparator2,
-            this.ExitToolContextStripMenuItem});
+            this.ContextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.AboutToolContextStripMenuItem, this.toolStripSeparator2, this.ExitToolContextStripMenuItem });
             this.ContextMenuStripMain.Name = "ContextMenuStripMain";
             this.ContextMenuStripMain.Size = new System.Drawing.Size(192, 54);
+            // 
+            // AboutToolContextStripMenuItem
+            // 
+            this.AboutToolContextStripMenuItem.Image = global::Lab2.Properties.Resources.about;
+            this.AboutToolContextStripMenuItem.Name = "AboutToolContextStripMenuItem";
+            this.AboutToolContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
+            this.AboutToolContextStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.AboutToolContextStripMenuItem.Text = "О программе...";
+            this.AboutToolContextStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(188, 6);
             // 
+            // ExitToolContextStripMenuItem
+            // 
+            this.ExitToolContextStripMenuItem.Image = global::Lab2.Properties.Resources.exit;
+            this.ExitToolContextStripMenuItem.Name = "ExitToolContextStripMenuItem";
+            this.ExitToolContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.ExitToolContextStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.ExitToolContextStripMenuItem.Text = "Выход";
+            this.ExitToolContextStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // MainToolStrip
             // 
-            this.MainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutToolStripButton,
-            this.ExitToolStripButton,
-            this.LeagueToolStripButton,
-            this.MatchToolStripButton,
-            this.PlayersToolStripButton,
-            this.TeamsToolStripButton});
+            this.MainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.AboutToolStripButton, this.ExitToolStripButton, this.LeagueToolStripButton, this.MatchToolStripButton, this.PlayersToolStripButton, this.TeamsToolStripButton, this.ToolStripLabelQueries });
             this.MainToolStrip.Location = new System.Drawing.Point(0, 24);
             this.MainToolStrip.Name = "MainToolStrip";
             this.MainToolStrip.Size = new System.Drawing.Size(800, 25);
@@ -181,73 +233,12 @@
             this.TeamsToolStripButton.Text = "Команды";
             this.TeamsToolStripButton.Click += new System.EventHandler(this.TeamsToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem
+            // ToolStripLabelQueries
             // 
-            this.exitToolStripMenuItem.Image = global::Lab2.Properties.Resources.exit;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.exitToolStripMenuItem.Text = "Выход";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Image = global::Lab2.Properties.Resources.about;
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.aboutToolStripMenuItem.Text = "О программе...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
-            // 
-            // TeamsToolStripMenuItem
-            // 
-            this.TeamsToolStripMenuItem.Image = global::Lab2.Properties.Resources.teams;
-            this.TeamsToolStripMenuItem.Name = "TeamsToolStripMenuItem";
-            this.TeamsToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.TeamsToolStripMenuItem.Text = "Каманды";
-            this.TeamsToolStripMenuItem.Click += new System.EventHandler(this.TeamsToolStripMenuItem_Click);
-            // 
-            // PlayersToolStripMenuItem
-            // 
-            this.PlayersToolStripMenuItem.Image = global::Lab2.Properties.Resources.players;
-            this.PlayersToolStripMenuItem.Name = "PlayersToolStripMenuItem";
-            this.PlayersToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.PlayersToolStripMenuItem.Text = "Игроки";
-            this.PlayersToolStripMenuItem.Click += new System.EventHandler(this.PlayersToolStripMenuItem_Click);
-            // 
-            // MatchesToolStripMenuItem
-            // 
-            this.MatchesToolStripMenuItem.Image = global::Lab2.Properties.Resources.match;
-            this.MatchesToolStripMenuItem.Name = "MatchesToolStripMenuItem";
-            this.MatchesToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.MatchesToolStripMenuItem.Text = "Матчи";
-            this.MatchesToolStripMenuItem.Click += new System.EventHandler(this.MatchesToolStripMenuItem_Click);
-            // 
-            // LeagueToolStripMenuItem
-            // 
-            this.LeagueToolStripMenuItem.Image = global::Lab2.Properties.Resources.leagues;
-            this.LeagueToolStripMenuItem.Name = "LeagueToolStripMenuItem";
-            this.LeagueToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
-            this.LeagueToolStripMenuItem.Text = "Турнирная таблица";
-            this.LeagueToolStripMenuItem.Click += new System.EventHandler(this.LeagueToolStripMenuItem_Click);
-            // 
-            // AboutToolContextStripMenuItem
-            // 
-            this.AboutToolContextStripMenuItem.Image = global::Lab2.Properties.Resources.about;
-            this.AboutToolContextStripMenuItem.Name = "AboutToolContextStripMenuItem";
-            this.AboutToolContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
-            this.AboutToolContextStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.AboutToolContextStripMenuItem.Text = "О программе...";
-            this.AboutToolContextStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
-            // 
-            // ExitToolContextStripMenuItem
-            // 
-            this.ExitToolContextStripMenuItem.Image = global::Lab2.Properties.Resources.exit;
-            this.ExitToolContextStripMenuItem.Name = "ExitToolContextStripMenuItem";
-            this.ExitToolContextStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.ExitToolContextStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.ExitToolContextStripMenuItem.Text = "Выход";
-            this.ExitToolContextStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.ToolStripLabelQueries.Name = "ToolStripLabelQueries";
+            this.ToolStripLabelQueries.Size = new System.Drawing.Size(56, 22);
+            this.ToolStripLabelQueries.Text = "Запросы";
+            this.ToolStripLabelQueries.Click += new System.EventHandler(this.ToolStripLabelQueries_Click);
             // 
             // MainForm
             // 
@@ -256,8 +247,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.MainToolStrip);
             this.Controls.Add(this.menuStripMain);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Lab2.Properties.Settings.Default, "FormPos", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.Location = global::Lab2.Properties.Settings.Default.FormPos;
+            settings1.FormPos = new System.Drawing.Point(100, 100);
+            settings1.SettingsKey = "";
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", settings1, "FormPos", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Location = new System.Drawing.Point(100, 100);
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "MainForm";
             this.Text = "Программа для футбольных турниров";
@@ -270,8 +263,9 @@
             this.MainToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.ToolStripLabel ToolStripLabelQueries;
 
         #endregion
 

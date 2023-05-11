@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -59,6 +60,11 @@ namespace Lab2
         private void LeagueToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             LeagueForm.GetForm().ShowDialog();
+        }
+
+        private void ToolStripLabelQueries_Click(object sender, EventArgs e)
+        {
+            QueriesForm.GetForm().ShowDialog();
         }
     }
 }
