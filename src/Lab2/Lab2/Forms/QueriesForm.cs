@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using Microsoft.SqlServer.Management.SqlParser.Parser;
+﻿using System.Windows.Forms;
 
 namespace Lab2.Forms
 {

@@ -4,8 +4,8 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using Lab2.Properties;
 using Microsoft.SqlServer.Management.SqlParser.Parser;
-using static System.Windows.Forms.CheckState;
 
 namespace Lab2.Controls
 {
@@ -33,7 +33,7 @@ namespace Lab2.Controls
             try
             {
                 var sql = result.Script.Sql;
-                using (var connection = new SqlConnection(Properties.Settings.Default.TUSURConnectionString))
+                using (var connection = new SqlConnection(Settings.Default.TUSURConnectionString))
                 {
                     connection.Open();
                     var command = connection.CreateCommand();
