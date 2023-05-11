@@ -39,6 +39,9 @@
     <Reference Include="dbup-sqlserver, Version=5.0.8.0, Culture=neutral, PublicKeyToken=4b419c53bdfd4cbf, processorArchitecture=MSIL">
       <HintPath>..\packages\dbup-sqlserver.5.0.8\lib\net462\dbup-sqlserver.dll</HintPath>
     </Reference>
+    <Reference Include="Lab2">
+      <HintPath>bin\Debug\Lab2.exe</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Services.AppAuthentication, Version=1.6.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.Services.AppAuthentication.1.6.2\lib\net472\Microsoft.Azure.Services.AppAuthentication.dll</HintPath>
     </Reference>
@@ -84,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\RequestExamples.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RequestExamples.Designer.cs">
+      <DependentUpon>RequestExamples.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LeagueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +140,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TUSURDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\RequestExamples.resx">
+      <DependentUpon>RequestExamples.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LeagueForm.resx">
       <DependentUpon>LeagueForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -21,11 +21,5 @@ namespace Lab2.Forms
             }
             return _queriesForm;
         }
-
-        private void ButtonExecute_Click(object sender, EventArgs e)
-        {
-            var sql = Parser.Parse(TextBoxSql.Text).Script.Sql;
-            
-        }
     }
 }
